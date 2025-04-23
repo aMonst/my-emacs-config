@@ -6,17 +6,17 @@
   (my-leader-def
     "f" #'avy-goto-char-timer))
 
-(use-package multiple-cursors
+(use-package evil-multiedit
   :ensure t
-  :after general
+  :after evil
   :config
+  (evil-multiedit-default-keybinds)
   (my-leader-def
-    ;;以 leader m 为前缀
-    "m n" #'mc/mark-next-like-this ;; 标记下一个相同内容
-    "m p" #'mc/mark-previous-like-this ;; 标记上一个相同内容
-    "m a" #'mc/mark-all-like-this ;; 标记所有相同内容
-    "m d" #'mc/skip-to-next-like-this ;; 跳过当前并标记下一个相同内容
-    "m s" #'mc/mark-all-in-region ;; 在选区中使用多光标
-    "m r" #'mc/reverse-region;; 反向选取光标
-    "m e" #'mc/edit-lines ;; 进入多行编辑模式
+    "m m" #'evil-multiedit-match-and-next ; 标记当前符号并跳转下一个
+    "m M" #'evil-multiedit-match-and-prev ; 标记当前符号并跳转上一个
+    "m a" #'evil-multiedit-match-all ; 标记所有相同符号
+    "m r" #'evil-multiedit-restore ; 恢复单光标模式
+    "m c" #'evil-multiedit-toggle-or-restrict ; 切换选区/限制编辑区域
     ))
+
+(provide 'init-edit)
