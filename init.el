@@ -4,6 +4,7 @@
 (require 'init-ui)
 (require 'init-evil)
 (require 'init-edit)
+(require 'init-completion)
 
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 (load custom-file 'no-error 'no-message)

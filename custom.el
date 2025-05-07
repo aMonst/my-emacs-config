@@ -5,8 +5,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(avy doom-themes evil evil-mc evil-multiedit general multiple-cursors
-	 rime)))
+   '(avy cape consult corfu counsel doom-themes evil-mc evil-multiedit
+	 general marginalia multiple-cursors orderless rime vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

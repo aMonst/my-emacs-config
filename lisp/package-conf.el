@@ -9,4 +9,7 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
 (provide 'package-conf)
