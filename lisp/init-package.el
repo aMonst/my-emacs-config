@@ -12,4 +12,4 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(provide 'package-conf)
+(provide 'init-package)

@@ -21,5 +21,7 @@
 (add-hook 'prog-mode-hook #'hs-minor-mode)  ; 编程模式下，可以折叠代码块
 (add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
 
-(savehist-mode 1)              ; （可选）打开 Buffer 历史记录保存
-(provide 'basic)
+(setq custom-file (expand-file-name "~/.emacs.d/custom/custom.el"))
+(load custom-file 'no-error 'no-message)
+
+(provide 'init-basic)

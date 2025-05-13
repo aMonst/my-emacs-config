@@ -5,9 +5,14 @@
   :hook (after-init . vertico-mode))
 
 (use-package consult
+  :ensure t)
+
+(use-package ripgrep
   :ensure t
+  :after consult
   :bind
-  (("C-s" . consult-line)))
+  (("C-s" . consult-ripgrep))
+  )
 
 (use-package orderless
   :ensure t
