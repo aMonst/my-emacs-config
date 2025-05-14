@@ -37,6 +37,16 @@
   (recentf-save-file (locate-user-emacs-file "custom/.recentf")) ;; 定义保存历史记录的临时文件路径
   )
 
+(use-package embark
+  :ensure t
+  :after consult
+  :bind
+  (("C-e" . embark-export)))
+
+(use-package embark-consult
+  :ensure t
+  :after embark)
+
 (use-package wgrep
   :ensure t
   :custom
