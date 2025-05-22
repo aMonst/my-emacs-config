@@ -11,7 +11,7 @@
 (setq make-backup-files nil)                                  ; 不自动备份
 (setq auto-save-default nil)                                  ; 不使用Emacs自带的自动保存
 
-(fset 'yes-or-no-p 'y-pr-n-p)
+(fset 'yes-or-no-p 'y-or-n-p)
 (setq confirm-kill-emacs #'y-or-n-p)   ; 在关闭 Emacs 前询问是否确认关闭，防止误触
 (electric-pair-mode t)            ; 自动补全括号
 (column-number-mode t)            ; 在 Mode line 上显示列号

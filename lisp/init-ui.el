@@ -34,4 +34,14 @@
   :custom
   (which-key-idle-delay 0.7))
 
+(use-package all-the-icons
+  :ensure t
+  :when (display-graphic-p)
+  :commands all-the-icons-install-fonts)
+
+(use-package all-the-icons-completion
+  :ensure t
+  :hook ((after-init . all-the-icons-completion-mode)
+	 (marginalia-mode . all-the-icons-completion-mode)))
+
 (provide 'init-ui)

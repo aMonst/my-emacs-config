@@ -41,7 +41,8 @@
   :ensure t
   :after consult
   :bind
-  (("C-e" . embark-export)))
+  (("C-e" . embark-export)
+   ("C-;" . embark-act)))
 
 (use-package embark-consult
   :ensure t

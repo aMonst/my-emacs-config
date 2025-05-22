@@ -5,3 +5,4 @@
 (require 'init-evil)
 (require 'init-edit)
 (require 'init-completion)
+(require 'init-dired)
