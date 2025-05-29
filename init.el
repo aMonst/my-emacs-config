@@ -6,3 +6,4 @@
 (require 'init-edit)
 (require 'init-completion)
 (require 'init-dired)
+(require 'init-window)

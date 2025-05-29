@@ -3,7 +3,11 @@
   :init
   (evil-mode)
   :custom
-  (evil-want-C-u-scroll t))
+  (evil-want-C-u-scroll t)
+  :config
+  ;; 自定义ex命令
+  (evil-ex-define-cmd "sp"  'split-window-below)
+  (evil-ex-define-cmd "vsp" 'split-window-right))
 
 (use-package general
   :ensure t
