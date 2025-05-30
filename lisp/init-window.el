@@ -11,7 +11,7 @@
     "h" #'evil-window-right
     "j" #'evil-window-down
     "k" #'evil-window-up
-  )
+  ))
 
 (use-package awesome-tab
   :load-path "~/.emacs.d/awesome-tab"
