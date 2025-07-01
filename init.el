@@ -7,3 +7,4 @@
 (require 'init-completion)
 (require 'init-dired)
 (require 'init-window)
+(require 'init-eshell)

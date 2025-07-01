@@ -1,0 +1,4 @@
+alias nil ls $*
+alias -al  $*
+alias ls -al
+alias ll ls -alh
