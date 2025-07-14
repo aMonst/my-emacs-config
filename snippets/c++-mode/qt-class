@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: qt-class
+# key: qcls
+# --
+
+class ${1} : public ${2:QObject}
+{
+    Q_OBJECT
+public:
+    ${1}(${2}* parent = nullptr);
+    ${1}(const ${1}& other);
+    ${1}& operator=(const ${1}& other);
+    ~${1}();
+
+signals:
+
+slots:
+
+protected:
+
+}

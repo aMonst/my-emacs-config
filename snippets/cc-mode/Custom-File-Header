@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Custom File Header
+# key: hdoc
+# --
+
+/**
+ * @file `(file-name-nondirectory (buffer-file-name))`
+ * @bref ${1:brief description}
+ * @details ${2:detailed explanation}
+ * @date `(format-time-string "%Y-%m-%d")`
+ * @commit history:
+ * \t v${3:1.0}: ${4:Initial version}
+ */
+$0
