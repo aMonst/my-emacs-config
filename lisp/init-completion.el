@@ -1,4 +1,5 @@
-;; Completion settings -*- lexical-binding: t -*-
+;; -*- lexical-binding: t -*-
+;; Completion settings
 
 (use-package vertico
   :ensure t

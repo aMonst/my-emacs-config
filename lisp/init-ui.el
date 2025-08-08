@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t -*-
+
 (use-package doom-themes
   :ensure t
   :config
@@ -29,7 +31,7 @@
    ))
 
 (use-package which-key
-  :ensure t 
+  :ensure t
   :hook (after-init . which-key-mode)
   :custom
   (which-key-idle-delay 0.7))
@@ -43,5 +45,20 @@
   :ensure t
   :hook ((after-init . all-the-icons-completion-mode)
 	 (marginalia-mode . all-the-icons-completion-mode)))
+
+(use-package doom-modeline
+  :ensure t
+  :init
+  (doom-modeline-mode 1)
+  :config
+  (setq doom-modeline-height 30)
+  (setq doom-modeline-bar-width 5)
+  (setq doom-modeline-icon t)
+  (setq doom-modeline-lsp t)
+  (setq doom-modeline-major-mode-icon t)
+  (setq doom-modeline-buffer-state-icon t)
+  (setq doom-modeline-buffer-file-name-style 'truncate-with-project)
+  (setq doom-modeline-check-simple-format t)
+  )
 
 (provide 'init-ui)
