@@ -1,7 +1,6 @@
 (require 'lsp-mode)
 
 (add-hook 'c++-mode-hook (lambda ()
-		      (message "hook c++-mode")
 		      (setq lsp-project-identification-methods
 			    '(:root ("compile_commands.json" ".git" ".clangd" "CMakeLists.txt" "Makefile")))
 		      (setq lsp-clients-clangd-args
@@ -14,5 +13,4 @@
 				    cape-keyword
 				    cape-dabbrev))
 		      (lsp-deferred)))
-
 (provide 'cpp)

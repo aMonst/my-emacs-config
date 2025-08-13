@@ -1,0 +1,9 @@
+[submodule "awesome-tab"]
+	path = awesome-tab
+	url = https://github.com/manateelazycat/awesome-tab.git
+[submodule "doom-snippets"]
+	path = doom-snippets
+	url = https://github.com/doomemacs/snippets.git
+[submodule "ts-fold"]
+	path = ts-fold
+	url = https://github.com/emacs-tree-sitter/ts-fold.git
