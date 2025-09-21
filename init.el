@@ -1,5 +1,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/lsp")
+(add-to-list 'load-path "~/.emacs.d/dap")
+
 (require 'init-basic)
 (require 'init-package)
 (require 'init-evil)
@@ -10,6 +12,6 @@
 (require 'init-eshell)
 (require 'init-project)
 (require 'init-lsp)
+(require 'init-dap)
 (require 'cpp)
 (require 'init-ui)
-
