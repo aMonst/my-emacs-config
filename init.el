@@ -15,3 +15,4 @@
 (require 'init-dap)
 (require 'cpp)
 (require 'init-ui)
+(require 'init-org)
