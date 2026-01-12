@@ -86,4 +86,63 @@
   (setq org-modern-keyword nil)
   )
 
+(use-package org-capture
+  :ensure nil
+  :custom
+  (org-capture-templates nil)
+  (org-capture-templates '(
+			   ("r" "Reading List" entry
+			    (file+olp "~/org/reading.org" "Reading" "Book")
+			    "*** TODO 《%^{书名}》\n作者:%^{作者}\n出版社:%^{出版社}:\n备注:%^{备注}\n添加时间:%U\n"
+			    :clock-int t
+			    :clock-resume t)))
+  :config
+  (add-to-list 'org-capture-templates
+	       `("b" "Blog" plain (file ,(concat "~/org/" (format-time-string "%Y-%m-%d.md")))
+		 ,(concat "---\n"
+			  "tile: %^{标题}\n"
+			  "date: %U\n"
+			  "categories: %^{分类}\n"
+			  "tags: %^{标签}\n"
+			  "draft: %^{草稿|true|false}\n"
+			  "---\n"
+			  "%?")))
+  (add-to-list 'org-capture-templates
+	       `("w" "Work Task" entry
+		 (file+headline "~/org/working.org" "Work")
+		 "* TODO %^{任务描述}  :%^{任务类型|dev|bugfix|env|doc|meeting}:\n  SCHEDULED: %^t\n  PRIORITY: %^{优先级|A|B|C|D}\n  %?\n  %i")))
+
+(use-package org-agenda
+  :ensure nil
+  :custom
+  (org-agenda-files (list "~/org/reading.org"
+			   "~/org/blog.org"
+			   "~/org/working.org"))
+  (org-highest-priority ?A)
+  (org-lowest-priority ?D)
+  (org-default-priority ?D)
+
+  (org-tag-alist `((:startgroup)
+		   ("dev" . ?d)
+		   ("bugfix" . ?B)
+		   ("env" . ?E)
+		   ("doc" . ?D)
+		   ("reading" . ?R)
+		   ("meeting" . ?M)
+		   (:endgroup)
+		   ("Sendto Tom" . ?T)
+		   ("Sendto Jerry" . ?J)
+		   ))
+  (org-todo-keywords '(
+		       (sequence "TODO(t)" "DOING(i)" "WAIT(w@/!)" "|" "DONE(d!)" "ABORT(a@)")
+		       )))
+
+(use-package org-pomodoro
+  :ensure t
+  :custom
+  (org-prmodoro-length 25) ;每个番茄钟25分钟
+  (org-pomodoro-short-break-length 5) ;; 短休5分钟
+  (org-pomodoro-long-break-length) ;; 长休15分钟 (每4个番茄钟之后)
+  (org-pomodoro-play-sounds-t) ;; 启用提示音
+  )
 (provide 'init-org)

@@ -4,3 +4,6 @@ elpa
 custom
 .lsp-session-v1
 projectile-bookmarks.eld
+.cache
+cpptools
+eln-cache/30.2-6a8b22b2
