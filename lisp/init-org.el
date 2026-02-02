@@ -121,6 +121,7 @@
   (org-highest-priority ?A)
   (org-lowest-priority ?D)
   (org-default-priority ?D)
+  (org-archive-location "~/org/archive/%s_archive::")
 
   (org-tag-alist `((:startgroup)
 		   ("dev" . ?d)
@@ -145,4 +146,47 @@
   (org-pomodoro-long-break-length) ;; 长休15分钟 (每4个番茄钟之后)
   (org-pomodoro-play-sounds-t) ;; 启用提示音
   )
+
+(use-package plantuml-mode
+  :ensure t
+  :mode ("\\.puml\\'" "\\.plantuml\\'")
+  :config
+  (setq plantuml-default-exec-mode 'jar)
+  (setq plantuml-jar-path (expand-file-name "~/.emacs.d/lib/plantuml.jar")) ;; 设置plantuml jar包的位置
+  ;; 让org代码块能识别plantuml语法
+  (add-to-list 'org-src-lang-modes '("plantuml" . "plantuml"))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((plantuml . t)))
+  (setq org-plantuml-jar-path plantuml-jar-path)
+  )
+
+(use-package org-roam
+  :ensure t
+  :after org
+  :init
+  (setq org-roam-v2-ack t)
+  :config
+  (org-roam-setup)
+  :custom
+  (org-roam-directory (file-truename "~/org/roam/"))
+  :bind
+  (("C-c n f" . org-roam-node-find)
+    ("C-c n i" . org-roam-node-insert)
+     ("C-c n o" . org-id-get-create)
+     ("C-c n t" . org-roam-tag-add)
+     ("C-c n a" . org-roam-alias-add)
+     ("C-c n l" . org-roam-buffer-toggle)
+     ))
+
+(use-package org-roam-ui
+  :vc (:url "https://github.com/org-roam/org-roam-ui"
+       :rev :newest)
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+
 (provide 'init-org)
