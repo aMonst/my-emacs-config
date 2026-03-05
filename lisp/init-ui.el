@@ -7,7 +7,7 @@
 
 (set-face-attribute 'default nil
 		    :family "Source Code Pro"
-		    :height 120)
+		    :height 160)
 
 (use-package rime
   :ensure t
