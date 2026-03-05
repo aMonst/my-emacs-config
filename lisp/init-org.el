@@ -135,7 +135,17 @@
 		   ))
   (org-todo-keywords '(
 		       (sequence "TODO(t)" "DOING(i)" "WAIT(w@/!)" "|" "DONE(d!)" "ABORT(a@)")
-		       )))
+		       ))
+
+  (org-enforce-todo-dependencies t) ; 子任务未完成不允许将主任务设置为DONE
+  (org-agenda-clockreport-parameter-plist
+   '(:link t        ; 让任务名称可点击，快速跳转到原文
+     :maxlevel 5    ; 显示到第5级任务（数字可调，越大显示越深）
+     :fileskip0 t   ; 跳过耗时0的文件，让报告更简洁
+     :compact nil   ; 设为 nil 以显示完整树状结构，而非紧凑模式
+     :narrow 80))
+  (org-archive-location "~/org/archive/%s_archive::")
+)
 
 (use-package org-pomodoro
   :ensure t
@@ -146,3 +156,46 @@
   (org-pomodoro-play-sounds-t) ;; 启用提示音
   )
 (provide 'init-org)
+
+(use-package plantuml-mode
+  :ensure t
+  :mode ("\\.puml\\'" "\\.plantuml\\'")
+  :config
+  (setq plantuml-default-exec-mode 'jar)
+  (setq plantuml-jar-path (expand-file-name "~/.emacs.d/lib/plantuml.jar"))
+  ;; 让org代码块能识别plantuml语法
+  (add-to-list 'org-src-lang-modes '("plantuml" . "plantuml"))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((plantuml . t)))
+  (setq org-plantuml-jar-path plantuml-jar-path)
+  )
+
+(use-package org-roam
+  :ensure t
+  :after org
+  :init
+  (setq org-oram-v2-ack t)
+  :config
+  (org-roam-setup)
+  :custom
+  (org-roam-directory "~/org/roam/")
+  :bind
+  (("C-c n f" . org-roam-node-find)
+    ("C-c n i" . org-roam-node-insert)
+     ("C-c n o" . org-id-get-create)
+     ("C-c n t" . org-roam-tag-add)
+     ("C-c n a" . org-roam-alias-add)
+     ("C-c n l" . org-roam-buffer-toggle)))
+
+
+
+(use-package org-roam-ui
+  :vc (:url "https://github.com/org-roam/org-roam-ui"
+       :rev :newest)
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
